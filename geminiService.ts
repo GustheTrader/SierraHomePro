@@ -2,7 +2,15 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { AgentRole } from "./types";
 import { KPI_MASTER_LIST } from "./constants";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Create the Gemini client lazily so a missing API key only affects AI calls
+// (which already have try/catch fallbacks) instead of crashing the whole app on load.
+let _ai: GoogleGenAI | null = null;
+const ai = {
+  get models() {
+    if (!_ai) _ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    return _ai.models;
+  }
+};
 
 const AGENT_SYSTEM_PROMPTS: Record<AgentRole, string> = {
   Planner: "You are Sierra Scheduler for Sierra Home Pros (Sparks, NV). You optimize daily residential home repair routes across Reno-Sparks, Carson City, and Lake Tahoe, grouping handyman visits, smart-home installs, and maintenance checks to cut drive time.",

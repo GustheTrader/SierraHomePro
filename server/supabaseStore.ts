@@ -9,7 +9,7 @@ import type {
   ServiceArea,
   SubscriptionVisit,
   VisitChecklistItem
-} from '../types.ts';
+} from '../types.js';
 
 function createSupabaseClientIfConfigured(): SupabaseClient | null {
   const rawUrl = process.env.SUPABASE_URL?.trim();

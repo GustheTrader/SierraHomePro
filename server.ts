@@ -12,15 +12,15 @@ import {
   updateMaintenancePlan,
   updateSubscription,
   updateVisit
-} from './server/supabaseStore.ts';
+} from './server/supabaseStore.js';
 import {
   createClientPreviewLink,
   listClientPreviewLinks,
   resolveClientPreviewLink,
   revokeClientPreviewLink,
   setClientPreviewEnabled
-} from './server/clientPreviewStore.ts';
-import type { LeadStage, PropertyType, ServiceArea } from './types.ts';
+} from './server/clientPreviewStore.js';
+import type { LeadStage, PropertyType, ServiceArea } from './types.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,7 +48,7 @@ function sanitizeText(val: unknown, maxLen: number): string {
   return val.trim().slice(0, maxLen);
 }
 
-async function startServer() {
+export function createApp() {
   const app = express();
   app.use(express.json({ limit: '256kb' }));
 
@@ -361,6 +361,12 @@ async function startServer() {
     return res.json(resolved.data);
   });
 
+  return app;
+}
+
+async function startServer() {
+  const app = createApp();
+
   // Mount Vite middleware in dev or serve static dist in production
   if (process.env.NODE_ENV !== 'production') {
     const { createServer: createViteServer } = await import('vite');
@@ -383,4 +389,7 @@ async function startServer() {
   });
 }
 
-startServer();
+// On Vercel, api/index.ts imports createApp() and Vercel handles requests itself.
+if (!process.env.VERCEL) {
+  startServer();
+}
