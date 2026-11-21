@@ -37,7 +37,7 @@ const App: React.FC = () => {
   const [enteredPreviewFromAdmin, setEnteredPreviewFromAdmin] = useState<boolean>(false);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     try {
-      const saved = window.localStorage.getItem('sierra_theme');
+      const saved = window.localStorage.getItem('sierra_theme_v2');
       if (saved === 'dark' || saved === 'light') return saved;
     } catch {
       // ignore storage errors
@@ -84,7 +84,7 @@ const App: React.FC = () => {
     root.classList.remove('light', 'dark');
     root.classList.add(theme);
     try {
-      window.localStorage.setItem('sierra_theme', theme);
+      window.localStorage.setItem('sierra_theme_v2', theme);
     } catch {
       // ignore storage errors
     }
