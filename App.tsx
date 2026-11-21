@@ -42,7 +42,7 @@ const App: React.FC = () => {
     } catch {
       // ignore storage errors
     }
-    return 'light';
+    return 'dark';
   });
 
   useEffect(() => {
@@ -179,14 +179,14 @@ const App: React.FC = () => {
 
       <main className="flex-1 ml-64 flex flex-col h-screen overflow-hidden">
         {/* Top Header */}
-        <header className="h-16 border-b border-zinc-800/80 flex items-center justify-between gap-6 px-8 bg-zinc-900/95 backdrop-blur-xl z-20 shrink-0 transition-colors">
-          <div className="flex items-center gap-2 text-sm min-w-0">
-            <span className="text-zinc-500 font-medium whitespace-nowrap">Sierra Home Pros</span>
+        <header className="h-14 border-b border-zinc-800 flex items-center justify-between gap-6 px-8 bg-zinc-900 z-20 shrink-0 transition-colors">
+          <div className="flex items-center gap-2.5 min-w-0 font-mono text-[11px] uppercase tracking-wider">
+            <span className="text-zinc-500 whitespace-nowrap">Sierra Home Pros</span>
             <span className="text-zinc-700" aria-hidden="true">/</span>
-            <span className="text-zinc-100 font-semibold truncate">{currentNavLabel}</span>
-            <span className="text-zinc-700 hidden xl:inline" aria-hidden="true">·</span>
-            <span className="text-xs text-zinc-500 hidden xl:inline whitespace-nowrap">
-              Reno–Sparks · Carson City · Lake Tahoe
+            <span className="text-zinc-100 truncate">{currentNavLabel}</span>
+            <span className="hidden xl:inline-flex items-center gap-1.5 ml-3 pl-3 border-l border-zinc-800 text-zinc-500 whitespace-nowrap">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" aria-hidden="true" />
+              Reno–Sparks · Carson City · Tahoe
             </span>
           </div>
 
@@ -209,7 +209,7 @@ const App: React.FC = () => {
                 onClick={() => setTheme('light')}
                 className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
                   theme === 'light'
-                    ? 'bg-sierra-navy text-white shadow-sm'
+                    ? 'bg-zinc-100 text-zinc-950'
                     : 'text-zinc-400 hover:text-zinc-100'
                 }`}
                 title="Switch to Light Mode"
@@ -221,7 +221,7 @@ const App: React.FC = () => {
                 onClick={() => setTheme('dark')}
                 className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors ${
                   theme === 'dark'
-                    ? 'bg-emerald-600 text-white shadow-sm'
+                    ? 'bg-zinc-100 text-zinc-950'
                     : 'text-zinc-400 hover:text-zinc-100'
                 }`}
                 title="Switch to Dark Mode"
@@ -263,7 +263,7 @@ const App: React.FC = () => {
         </header>
 
         {/* Dynamic Content Area */}
-        <div className="flex-1 overflow-y-auto p-8 scroll-smooth relative">
+        <div className="flex-1 overflow-y-auto p-8 scroll-smooth relative ledger-grid">
           <div className="max-w-7xl mx-auto">
             {renderContent()}
           </div>

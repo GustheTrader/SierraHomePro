@@ -10,17 +10,13 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, theme }) => {
   return (
-    <aside className="w-64 bg-zinc-900 border-r border-zinc-800/80 flex flex-col h-screen fixed left-0 top-0 z-30 transition-colors">
-      <div className="p-5 flex-1 overflow-y-auto">
+    <aside className="w-64 bg-zinc-900 border-r border-zinc-800 flex flex-col h-screen fixed left-0 top-0 z-30 transition-colors">
+      <div className="py-5 px-3 flex-1 overflow-y-auto">
         {/* Sierra Home Pros Official Brand Logo */}
-        <div className="mb-7">
+        <div className="mb-7 px-0.5">
           <button
             onClick={() => setActiveTab('dashboard')}
-            className={`w-full text-left rounded-xl transition-all block ${
-              theme === 'dark'
-                ? 'bg-[#FAF8F5] px-3 py-2.5 border border-zinc-700/60 shadow-sm'
-                : 'bg-[#FAF8F5] px-3 py-2.5 border border-zinc-800/70'
-            }`}
+            className="w-full text-left transition-all block bg-[#FAF8F5] px-3 py-2.5 border border-zinc-700"
             title="Sierra Home Pros — Daily Operations"
           >
             <img
@@ -29,33 +25,47 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, theme }) => 
               className="w-full h-11 object-contain object-left"
             />
           </button>
-          <p className="text-[11px] font-medium text-zinc-500 mt-2 px-1">
-            Home Repair · Smart Home · Maintenance
+          <p className="text-[10px] uppercase tracking-wider text-zinc-500 mt-2.5 px-0.5">
+            Repair · Smart Home · Upkeep
           </p>
         </div>
 
-        <nav className="space-y-1">
-          {NAV_ITEMS.map((item) => {
+        <p className="text-[10px] uppercase tracking-wider text-zinc-600 px-3.5 mb-2">Workspace</p>
+        <nav className="border-t border-zinc-800">
+          {NAV_ITEMS.map((item, index) => {
             const isActive = activeTab === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm transition-colors whitespace-nowrap ${
+                aria-current={isActive ? 'page' : undefined}
+                className={`group relative w-full flex items-center gap-3 pl-3.5 pr-3 py-2.5 text-[13px] border-b border-zinc-800 transition-colors whitespace-nowrap ${
                   isActive
-                    ? 'bg-emerald-500/12 text-emerald-400 font-semibold border border-emerald-500/25'
-                    : 'text-zinc-400 hover:bg-zinc-950/70 hover:text-zinc-100 border border-transparent'
+                    ? 'bg-zinc-950 text-zinc-50 font-semibold'
+                    : 'text-zinc-400 hover:bg-zinc-950/60 hover:text-zinc-100'
                 }`}
               >
-                <span className="shrink-0">{item.icon}</span>
-                <span className="truncate">{item.label}</span>
+                <span
+                  className={`absolute left-0 top-0 bottom-0 w-[2px] transition-colors ${
+                    isActive ? 'bg-emerald-400' : 'bg-transparent group-hover:bg-zinc-700'
+                  }`}
+                  aria-hidden="true"
+                />
+                <span className={`shrink-0 ${isActive ? 'text-emerald-400' : ''}`}>{item.icon}</span>
+                <span className="truncate flex-1 text-left">{item.label}</span>
+                <span
+                  className={`font-mono text-[10px] ${isActive ? 'text-emerald-400' : 'text-zinc-600'}`}
+                  aria-hidden="true"
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </span>
               </button>
             );
           })}
         </nav>
       </div>
 
-      <div className="p-5 border-t border-zinc-800/80 bg-zinc-950/40">
+      <div className="p-5 border-t border-zinc-800 bg-zinc-900">
         <div className="space-y-2 text-xs text-zinc-400">
           <p className="font-semibold text-zinc-100">{COMPANY_INFO.headquarters} Dispatch</p>
           <p className="text-[11px] text-zinc-500 leading-relaxed">
