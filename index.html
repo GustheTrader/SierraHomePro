@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sierra Home Pros — Residential Service & Dispatch Hub</title>
+  <meta name="description" content="Operations and dispatch hub for Sierra Home Pros serving Reno-Sparks, Carson City, and Lake Tahoe with handyman repairs, smart-home installs, painting, maintenance plans, and senior safety upgrades." />
+  <meta property="og:title" content="Sierra Home Pros — Residential Service & Dispatch Hub" />
+  <meta property="og:description" content="Manage residential handyman repairs, written estimates, smart-home installations, painting, and senior home-safety upgrades across Reno-Sparks, Carson City, and Lake Tahoe." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            zinc: {
+              950: 'rgb(var(--c-bg) / <alpha-value>)',
+              900: 'rgb(var(--c-surface) / <alpha-value>)',
+              800: 'rgb(var(--c-border) / <alpha-value>)',
+              700: 'rgb(var(--c-border-strong) / <alpha-value>)',
+              600: 'rgb(var(--c-muted-strong) / <alpha-value>)',
+              500: 'rgb(var(--c-muted) / <alpha-value>)',
+              400: 'rgb(var(--c-text-secondary) / <alpha-value>)',
+              300: 'rgb(var(--c-text-body) / <alpha-value>)',
+              200: 'rgb(var(--c-text-strong) / <alpha-value>)',
+              100: 'rgb(var(--c-text-primary) / <alpha-value>)',
+              50:  'rgb(var(--c-text-peak) / <alpha-value>)',
+            },
+            emerald: {
+              50:  'rgb(var(--c-brand-50) / <alpha-value>)',
+              100: 'rgb(var(--c-brand-100) / <alpha-value>)',
+              200: 'rgb(var(--c-brand-200) / <alpha-value>)',
+              300: 'rgb(var(--c-brand-300) / <alpha-value>)',
+              400: 'rgb(var(--c-brand-400) / <alpha-value>)',
+              500: 'rgb(var(--c-brand-500) / <alpha-value>)',
+              600: 'rgb(var(--c-brand-600) / <alpha-value>)',
+              700: 'rgb(var(--c-brand-700) / <alpha-value>)',
+              800: 'rgb(var(--c-brand-800) / <alpha-value>)',
+              900: 'rgb(var(--c-brand-900) / <alpha-value>)',
+            },
+            sierra: {
+              navy: '#132C47',
+              'navy-hover': '#1C3D61',
+              copper: '#B96626',
+              'copper-hover': '#A0551C',
+              cream: '#FAF8F5',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Sierra Home Pros Light Mode (Warm Ivory + Deep Sierra Navy + Sierra Copper) */
+    :root,
+    html.light {
+      --c-bg: 246 244 239;            /* #F6F4EF Warm Alabaster Canvas */
+      --c-surface: 255 255 255;       /* #FFFFFF Crisp Card & Sidebar */
+      --c-border: 226 220 210;        /* #E2DCD2 Warm Stone Border */
+      --c-border-strong: 198 190 177; /* #C6BEB1 Hover/Input Border */
+      --c-muted-strong: 122 137 153;  /* #7A8999 */
+      --c-muted: 96 114 134;          /* #607286 Slate Muted Text */
+      --c-text-secondary: 67 87 109;  /* #43576D Secondary Copy */
+      --c-text-body: 41 62 86;        /* #293E56 Body Text */
+      --c-text-strong: 24 48 75;      /* #18304B Strong Label */
+      --c-text-primary: 19 44 71;     /* #132C47 Exact Logo Deep Sierra Navy */
+      --c-text-peak: 11 28 48;        /* #0B1C30 Peak Contrast */
+
+      /* Sierra Copper Accent Scale (Light Mode tuned for WCAG AA contrast) */
+      --c-brand-50: 253 246 239;
+      --c-brand-100: 249 233 217;
+      --c-brand-200: 240 205 174;
+      --c-brand-300: 154 77 22;       /* #9A4D16 Deep Copper text on light tints */
+      --c-brand-400: 185 102 38;      /* #B96626 Exact Logo Sierra Copper */
+      --c-brand-500: 194 107 39;      /* #C26B27 Bars, borders, indicators */
+      --c-brand-600: 185 102 38;      /* #B96626 Primary Buttons (white text) */
+      --c-brand-700: 154 77 22;
+      --c-brand-800: 122 61 18;
+      --c-brand-900: 92 45 14;
+
+      /* Chart & Scrollbar Tokens */
+      --chart-grid: #e2dcd2;
+      --chart-axis: #607286;
+      --chart-tooltip-bg: #ffffff;
+      --chart-tooltip-border: #d8d0c3;
+      --chart-tooltip-text: #132c47;
+      --chart-primary: #132c47;       /* Deep Sierra Navy */
+      --chart-secondary: #b96626;     /* Sierra Copper */
+      --scroll-track: #efeae2;
+      --scroll-thumb: #c8bfb0;
+      --scroll-thumb-hover: #a89d8b;
+    }
+
+    /* Sierra Home Pros Dark Mode (Deep Alpine Sierra Navy + Warm Copper) */
+    html.dark {
+      --c-bg: 9 19 31;                /* #09131F Deep Alpine Navy Canvas */
+      --c-surface: 15 30 47;          /* #0F1E2F Midnight Sierra Card */
+      --c-border: 29 50 74;           /* #1D324A Navy Slate Border */
+      --c-border-strong: 44 71 102;   /* #2C4766 Hover/Input Border */
+      --c-muted-strong: 94 118 144;
+      --c-muted: 132 154 178;         /* #849AB2 Muted Labels */
+      --c-text-secondary: 173 190 208;/* #ADBED0 Secondary Copy */
+      --c-text-body: 211 221 232;     /* #D3DDE8 Body Text */
+      --c-text-strong: 233 237 242;   /* #E9EDF2 Strong Label */
+      --c-text-primary: 247 244 239;  /* #F7F4EF Warm Ivory Primary Text */
+      --c-text-peak: 255 255 255;
+
+      /* Sierra Copper Accent Scale (Dark Mode luminous copper) */
+      --c-brand-50: 42 25 14;
+      --c-brand-100: 66 36 18;
+      --c-brand-200: 112 60 26;
+      --c-brand-300: 244 180 124;     /* #F4B47C Warm light copper on dark tints */
+      --c-brand-400: 229 138 62;      /* #E58A3E Luminous Sierra Copper */
+      --c-brand-500: 204 112 39;      /* #CC7027 Bars & highlights */
+      --c-brand-600: 185 102 38;      /* #B96626 Primary Buttons (white text) */
+      --c-brand-700: 156 82 28;
+      --c-brand-800: 120 62 21;
+      --c-brand-900: 88 45 16;
+
+      /* Chart & Scrollbar Tokens */
+      --chart-grid: #1d324a;
+      --chart-axis: #849ab2;
+      --chart-tooltip-bg: #0c1826;
+      --chart-tooltip-border: #263f5c;
+      --chart-tooltip-text: #f7f4ef;
+      --chart-primary: #3b77ad;       /* Alpine Navy Blue */
+      --chart-secondary: #e58a3e;     /* Luminous Sierra Copper */
+      --scroll-track: #0c1826;
+      --scroll-thumb: #243b55;
+      --scroll-thumb-hover: #355477;
+    }
+
+    /* High-contrast semantic status overrides for Light Mode readability */
+    html.light .text-amber-300,
+    html.light .text-amber-400 {
+      color: #b45309 !important;
+    }
+    html.light .text-sky-300,
+    html.light .text-sky-400 {
+      color: #1d4ed8 !important;
+    }
+    html.light .text-red-300,
+    html.light .text-red-400 {
+      color: #b91c1c !important;
+    }
+    html.light .bg-zinc-900\/60,
+    html.light .bg-zinc-900 {
+      box-shadow: 0 1px 2px rgba(19, 44, 71, 0.04);
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: rgb(var(--c-bg));
+      color: rgb(var(--c-text-primary));
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--scroll-track);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--scroll-thumb);
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--scroll-thumb-hover);
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "recharts": "https://esm.sh/recharts@^3.7.0"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

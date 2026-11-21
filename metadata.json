@@ -1,0 +1,11 @@
+{
+  "name": "Remix: Metcalf OS Mission Controls",
+  "description": "An AI-powered construction management platform for SMBs featuring agentic intelligence for project forecasting, resource optimization, and automated workflow management.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
