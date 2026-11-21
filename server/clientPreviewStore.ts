@@ -3,7 +3,7 @@ import type {
   ClientPreviewLinkSummary,
   ClientPreviewMilestone,
   ClientPreviewPayload
-} from '../types.ts';
+} from '../types.js';
 
 interface StoredClientPreviewRecord {
   payload: ClientPreviewPayload;
